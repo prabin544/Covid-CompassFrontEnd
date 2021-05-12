@@ -27,7 +27,7 @@ We chose a very neautral palate with pops of color.
 Prabin Singh, Louis Lassegue, Michael Hendricks
 
 ## Technologies used
-Aut0, Node, Bootstrap.
+Auth0, Node, Bootstrap.
 
 ## Imgs
 Welcome to the Landing page! The USER clicks login and authrorizes Auth0 to access google for authentication. 
