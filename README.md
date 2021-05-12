@@ -20,8 +20,6 @@ This is the covid-compass app that engages the user to search covid data in diff
 - change value of REACT_APP_BACKEND_URL as per users backend repo setup
 - run ```npm start```
 
-At the top of the main page, the user has an option to view ALL COUNTRIES or ADD COUNTRY. Depending on their choice they can start the game. 
-
 ## Design and Animation
 We chose a very neautral palate with pops of color. 
 
