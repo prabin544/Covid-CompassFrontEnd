@@ -48,6 +48,13 @@ User can click LogOut button which redirects them to Landing page.
 
 ![screenshot](public/imgs/bracketspage.png)
 
+### FlowChart
+
+![screenshot](src/assets/imgs/Wireframe 1.png.png)  
+![screenshot](src/assets/imgs/Wireframe 2.png.png)  
+![screenshot](src/assets/imgs/Wireframe 3.png.png)  
+![screenshot](src/assets/imgs/Wireframe 4.png.png)  
+
 
 ## Links
 
