@@ -52,7 +52,7 @@ User can click LogOut button which redirects them to Landing page.
  
 ![screenshot](public/imgs/Wireframe1.png?raw=true "Initial Page")  
 ![screenshot](public/imgs/Wireframe2.png?raw=true "Initial Page")  
-![screenshot](public/imgs/Wireframe3.png?raw=true "Initial Page"g)  
+![screenshot](public/imgs/Wireframe3.png?raw=true "Initial Page")  
 ![screenshot](public/imgs/Wireframe4.png?raw=true "Initial Page")  
 ![screenshot](public/imgs/Domain.jpg?raw=true "Initial Page") 
 
