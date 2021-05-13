@@ -1,16 +1,17 @@
 import React from 'react';
 
-import { Navbar, NavDropdown } from 'react-bootstrap';
+import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 
-class Nav extends React.Component {
+class Navigation extends React.Component {
   render() {
     return (
+      <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">Covid-Compass</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#About Us">About Us</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -28,8 +29,9 @@ class Nav extends React.Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      </>
     );
   }
 }
 
-export default Nav;
+export default Navigation;

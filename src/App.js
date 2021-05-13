@@ -1,14 +1,16 @@
 
 import React from 'react';
 import './App.css';
-import Nav from './Components/Nav';
+import Navigation from './Components/Navigation';
+import AboutUs from './Components/AboutUs';
 
 class App extends React.Component {
   render() {
     return (
-     
-      <Nav />
-      
+     <>
+      <Navigation />
+      <AboutUs />
+      </>
     )
   }
 }
