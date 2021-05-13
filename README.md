@@ -1,6 +1,7 @@
 # Covid-CompassFrontEnd
 
 ## Index
+
 * About our project
 * How this works
 * Design and animation
@@ -10,6 +11,7 @@
 * Links
 
 ## About our project
+
 This is the covid-compass app that engages the user to search covid data in different countries or any state in US. It was built to allow users to track covid cases and plan ahead accordingly.
 
 ## How this works
@@ -21,13 +23,13 @@ This is the covid-compass app that engages the user to search covid data in diff
 - run ```npm start```
 
 ## Design and Animation
-We chose a very neautral palate with pops of color. 
+We chose a very neutral palette with pops of color. 
 
 ## Who we are
 Prabin Singh, Louis Lassegue, Michael Hendricks
 
 ## Technologies used
-Auth0, Node, Bootstrap.
+React, Auth0, Node, Axios, React-Bootstrap, Mongoose, MongoDB
 
 ## Imgs
 Welcome to the Landing page! The USER clicks login and authrorizes Auth0 to access google for authentication. 
