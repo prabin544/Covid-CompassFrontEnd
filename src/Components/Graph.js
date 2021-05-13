@@ -30,14 +30,6 @@ const Graph = () => (
   <>
     <div className='header'>
 
-      <div className='links'>
-        <a
-          className='btn btn-gh'
-
-        >
-
-        </a>
-      </div>
     </div>
     <Line style ={{ 
         width: '600px',
