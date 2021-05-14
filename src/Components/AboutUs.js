@@ -1,15 +1,15 @@
 import React from 'react';
 import { Container, CardDeck, Image, Row, Col, Card } from 'react-bootstrap';
-
+import './AboutUs.css'
 class AboutUs extends React.Component {
   render() {
     return (
       <>
-        <Container>
+        <Container >
           <CardDeck>
             <h1>Team: OPTIONS</h1>
             <Row>
-              <Card>
+              <Card className="backCard" border="dark">
                 <Col xs={6} md={4}>
                   <Image src="https://via.placeholder.com/150x150" thumbnail />
                 </Col>
@@ -20,7 +20,7 @@ class AboutUs extends React.Component {
 numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu</Card.Text>
                 </Card.Body>
               </Card>
-              <Card>
+              <Card className="backCard" border="dark">
                 <Col xs={6} md={4}>
                   <Image src="https://via.placeholder.com/150x150" thumbnail />
                 </Col>
@@ -31,7 +31,7 @@ numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu</Ca
 numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu</Card.Text>
                 </Card.Body>
               </Card>
-              <Card>
+              <Card className="backCard" border="dark">
                 <Col xs={6} md={4}>
                   <Image src="https://via.placeholder.com/150x150" thumbnail />
                 </Col>
