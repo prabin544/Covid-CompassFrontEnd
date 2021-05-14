@@ -6,10 +6,6 @@ import Navigation from './Components/Navigation';
 import { withAuth0 } from '@auth0/auth0-react';
 import AboutUs from './Components/AboutUs';
 import CovidSummary from './Components/CovidSummary';
-import AboutUs from './Components/AboutUs';
-
-import CovidSummary from './Components/CovidSummary';
-
 
 import {
   BrowserRouter as Router,
