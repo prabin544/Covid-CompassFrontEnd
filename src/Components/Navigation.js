@@ -1,11 +1,10 @@
 import React from 'react';
-
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
-
-
+import LoginButton from "./LoginButton"
 
 class Navigation extends React.Component {
   render() {
+
     return (
 
       <>
@@ -30,9 +29,7 @@ class Navigation extends React.Component {
           </Nav>
           <Nav>
             <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-      </Nav.Link>
+            <LoginButton />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
