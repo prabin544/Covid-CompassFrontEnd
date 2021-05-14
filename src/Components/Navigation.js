@@ -1,8 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-=======
 import './Navigation.css';
->>>>>>> 03a18c9936f253415978de6bbaa7406d16828f5f
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import LoginButton from "./LoginButton"
 
