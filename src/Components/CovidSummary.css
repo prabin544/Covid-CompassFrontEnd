@@ -4,11 +4,13 @@ h1{
 }
 .numbers{
     font-family: 'Ultra', serif;
-    font-weight: bolder;
+    font-weight:normal;
+    font-size: medium;
 }
 .header{
     font-family: 'Goblin One';
-    font-weight: bolder;
+    font-weight:normal;
+    font-size: small;
 }
 .jumbotron {
     background-image: url('../assets/img/images.jpg');

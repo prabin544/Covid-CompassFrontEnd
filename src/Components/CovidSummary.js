@@ -95,17 +95,14 @@ class CovidSummary extends React.Component {
                     <Row>
                         <Col sm={10}><h1>{this.state.country === '' ? 'World Wide' : this.state.country }</h1></Col>
                         <Col sm={2}>
-                            <Card className="text-center">
-                                <Card.Header className='numbers'><NumberFormat className='numbers' value='\$ 1235314' displayType={'text'} thousandSeparator={true} /></Card.Header>
-                                <Donation variant="secondary">Donate</Donation>
-                            </Card>
+                            💰<NumberFormat className='numbers'  value=' 1235314' displayType={'text'} thousandSeparator={true} />
+                            <Donation variant="secondary">Donate</Donation>
                         </Col>
                     </Row>
                 </Container>
             </Jumbotron>
-            <Container>
-            <Row>
-                <Col sm={2} active style={{ marginTop: '50px'}}>
+            <Row style={{ display:'flex', flexWrap:'wrap', alignContent:'baseline', justifyContent: 'space-evenly' }}>
+                <Col sm={2} active style={{ margin:'auto'}}>
                     <Form data-testid="add-form" >
                         <Card style={{ width: '17rem', margin: 'auto' }}>
                         <Card.Header className='header'>Find Cases By Country</Card.Header>
@@ -140,20 +137,20 @@ class CovidSummary extends React.Component {
                     label={this.state.label}
                     />
                 </Col>
-                <Col md={2}>
-                    <Card active style={{ flex: 1, marginBottom: 10 }}>
+                <Col md={2}  >
+                    <Card active style={{ flex: 1, width: '17rem', margin: 'auto', marginBottom: 10}}>
                         <Card.Header className='header'>Confirmed</Card.Header>
                         <Card.Body>
                         <Card.Title> <NumberFormat className='numbers' value={this.state.totalConfirmedCases} displayType={'text'} thousandSeparator={true} />  </Card.Title>
                         </Card.Body>
                     </Card>
-                    <Card active style={{ flex: 1, marginBottom: 10 }}>
+                    <Card active style={{ flex: 1, width: '17rem', margin: 'auto', marginBottom: 10 }}>
                         <Card.Header className='header'>Total Recovered</Card.Header>
                         <Card.Body>
                         <Card.Title> <NumberFormat className='numbers' value={this.state.totalRecovered} displayType={'text'} thousandSeparator={true} /> </Card.Title>
                         </Card.Body>
                     </Card>
-                    <Card active style={{ flex: 1 }}>
+                    <Card active style={{flex: 1, width: '17rem', margin: 'auto', marginBottom: 10 }}>
                         <Card.Header className='header'>Total Deaths</Card.Header>
                         <Card.Body>
                         <Card.Title><NumberFormat className='numbers' value={this.state.totalDeaths} displayType={'text'} thousandSeparator={true} /> </Card.Title>
@@ -161,7 +158,6 @@ class CovidSummary extends React.Component {
                     </Card>
                 </Col>
             </Row>
-            </Container>
             </>
         );
     }
