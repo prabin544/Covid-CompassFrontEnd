@@ -1,9 +1,12 @@
 import React from 'react';
-import { Card, Container, Form, Button } from 'react-bootstrap';
+import { Card, Container, Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
 import SearchCountry from './SearchCountry';
 import Graph from './Graph';
 import NumberFormat from 'react-number-format';
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import Donation from './Donation'
+import './CovidSummary.css'
 
 class CovidSummary extends React.Component {
 
@@ -40,7 +43,7 @@ class CovidSummary extends React.Component {
 
     daysHandler = (e) =>{
         this.setState({
-            country: e.target.value
+            days: e.target.value
             
         })
         const d = new Date()
@@ -87,82 +90,78 @@ class CovidSummary extends React.Component {
         console.log(this.state.coronaCountArray)
         return (
             <>
-            <h1 style={{
-                display: 'flex',
-                marginTop: '20px',
-                justifyContent: 'center'
-                
-            }}
-            >               
-            {this.state.country === '' ? 'World Wide' : this.state.country }</h1>
-            <Container style={{
-                display: 'flex',
-                marginTop: '20px'
-                
-            }}>
-                <Form data-testid="add-form" >
-                    <Card style={{ width: '18rem' }}>
-                    <Card.Header>Find cases By Country</Card.Header>
-                    <Card.Body>
-                        
-                        <Form.Group>
-                        <Form.Label>Country</Form.Label>
-                        <select value={this.state.country} onChange={this.coutryHandler}>
-                            <option value=''>Select Country</option>
-                        {
-                            this.state.summary.Countries && this.state.summary.Countries.map(country=>
-                            <option key={country.slug} value={country.slug}>{country.Country}</option>
-                            )
-                        }
-                        </select>
-                        </Form.Group>
-                        <Form.Group>
-                        <Form.Label>Days</Form.Label>
-                        <select value={this.state.days} onChange={this.daysHandler}>
-                            <option value='7'>Last 7 days</option>
-                            <option value='30'>Last 30 days</option>
-                            <option value='60'>Last 60 days</option>
-                        </select>
-                        </Form.Group>
-                        <Button variant="primary" type="submit">Search</Button>
-                    </Card.Body>
+            <Jumbotron fluid>
+                <Container>
+                    <Row>
+                        <Col sm={10}><h1>{this.state.country === '' ? 'World Wide' : this.state.country }</h1></Col>
+                        <Col sm={2}>
+                            <Card className="text-center">
+                                <Card.Header className='numbers'><NumberFormat className='numbers' value='\$ 1235314' displayType={'text'} thousandSeparator={true} /></Card.Header>
+                                <Donation variant="secondary">Donate</Donation>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
+            </Jumbotron>
+            <Container>
+            <Row>
+                <Col sm={2} active style={{ marginTop: '50px'}}>
+                    <Form data-testid="add-form" >
+                        <Card style={{ width: '17rem', margin: 'auto' }}>
+                        <Card.Header className='header'>Find Cases By Country</Card.Header>
+                        <Card.Body>
+                            
+                            <Form.Group>
+                            <Form.Label>Country</Form.Label>
+                            <select value={this.state.country} onChange={this.coutryHandler}>
+                                <option value=''>Select Country</option>
+                            {
+                                this.state.summary.Countries && this.state.summary.Countries.map(country=>
+                                <option key={country.slug} value={country.slug}>{country.Country}</option>
+                                )
+                            }
+                            </select>
+                            </Form.Group>
+                            <Form.Group>
+                            <Form.Label>Days</Form.Label>
+                            <select value={this.state.days} onChange={this.daysHandler}>
+                                <option value='7'>Last 7 days</option>
+                                <option value='30'>Last 30 days</option>
+                                <option value='60'>Last 60 days</option>
+                            </select>
+                            </Form.Group>
+                        </Card.Body>
+                        </Card>
+                    </Form> 
+                </Col>
+                <Col >
+                    <Graph 
+                    yAxis={this.state.coronaCountArray}
+                    label={this.state.label}
+                    />
+                </Col>
+                <Col md={2}>
+                    <Card active style={{ flex: 1, marginBottom: 10 }}>
+                        <Card.Header className='header'>Confirmed</Card.Header>
+                        <Card.Body>
+                        <Card.Title> <NumberFormat className='numbers' value={this.state.totalConfirmedCases} displayType={'text'} thousandSeparator={true} />  </Card.Title>
+                        </Card.Body>
                     </Card>
-                </Form>
-                <Card>
-                    <Card.Header>Total Confirmed Cases</Card.Header>
-                    <Card.Body>
-                    <Card.Title> <NumberFormat value={this.state.totalConfirmedCases} displayType={'text'} thousandSeparator={true} />  </Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk
-                        of the card's content.
-                    </Card.Text>
-                    </Card.Body>
-                </Card>
-                <Card>
-                    <Card.Header>Total Recovered</Card.Header>
-                    <Card.Body>
-                    <Card.Title> <NumberFormat value={this.state.totalRecovered} displayType={'text'} thousandSeparator={true} /> </Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk
-                        of the card's content.
-                    </Card.Text>
-                    </Card.Body>
-                </Card>
-                <Card>
-                    <Card.Header>Total Deaths</Card.Header>
-                    <Card.Body>
-                    <Card.Title><NumberFormat value={this.state.totalDeaths} displayType={'text'} thousandSeparator={true} /> </Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk
-                        of the card's content.
-                    </Card.Text>
-                    </Card.Body>
-                </Card>
+                    <Card active style={{ flex: 1, marginBottom: 10 }}>
+                        <Card.Header className='header'>Total Recovered</Card.Header>
+                        <Card.Body>
+                        <Card.Title> <NumberFormat className='numbers' value={this.state.totalRecovered} displayType={'text'} thousandSeparator={true} /> </Card.Title>
+                        </Card.Body>
+                    </Card>
+                    <Card active style={{ flex: 1 }}>
+                        <Card.Header className='header'>Total Deaths</Card.Header>
+                        <Card.Body>
+                        <Card.Title><NumberFormat className='numbers' value={this.state.totalDeaths} displayType={'text'} thousandSeparator={true} /> </Card.Title>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
             </Container>
-            <Graph 
-                yAxis={this.state.coronaCountArray}
-                label={this.state.label}
-            />
             </>
         );
     }
