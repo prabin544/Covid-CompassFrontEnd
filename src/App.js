@@ -6,6 +6,7 @@ import Navigation from './Components/Navigation';
 import { withAuth0 } from '@auth0/auth0-react';
 import AboutUs from './Components/AboutUs';
 import CovidSummary from './Components/CovidSummary';
+import SavedCities from './Components/SavedCities.js'
 import Donation from './Components/Donation';
 
 import {
@@ -26,6 +27,7 @@ class App extends React.Component {
           <Switch>
           <Route exact path="/">
             {isAuthenticated ? <CovidSummary /> : <AboutUs /> }
+            
           </Route >
           <Route exact path="/aboutus"><AboutUs /></Route >
           <Route exact path="/covidpage"><CovidSummary /></Route >

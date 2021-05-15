@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Container, Form, Button, Row, Col } from 'react-bootstrap';
-import axios from 'axios'
+import axios from 'axios';
+import {withAuth0} from '@auth0/auth0-react'
 import SearchCountry from './SearchCountry';
 import Graph from './Graph';
 import NumberFormat from 'react-number-format';
@@ -20,7 +21,9 @@ class CovidSummary extends React.Component {
             totalRecovered: 0,
             totalDeaths: 0,
             country: '',
-            coronaCountArray: []
+            coronaCountArray: [],
+            indexShowing: false,
+            //savedLocationsArray: [],
         };
       }
 
@@ -39,6 +42,52 @@ class CovidSummary extends React.Component {
         const to = this.formatDate(d);
         const from = this.formatDate(d.setDate(d.getDate() - this.state.days));
         this.getCountryReport(e.target.value, from, to )
+    }
+
+
+    
+    savedCountryHandler = (locationName) => {
+        const { user } = this.props.auth0;
+        axios.get(`http://localhost:3002/users/${locationName}?user=${user.email}`).then(responseData => {
+            console.log(responseData.data);
+        })
+    }
+
+    handleDeleteLocation = (id) => {
+        const { user } = this.props.auth0;
+        axios.delete(`http://localhost:3002/users/${id}?user=${user.email}`).then(responseData => {
+            this.setState({
+                savedLocationsArray: responseData.data,
+            })
+        })
+    }
+
+    toggleShowingData = () => {
+        this.setState({
+            indexShowing: true,
+        })
+    }
+
+    saveHandler = (e) => {
+        e.preventDefault();
+        const savedCountryName = this.state.country;
+        const savedCountryConfirmed = this.state.totalConfirmedCases;
+        const savedCountryRecovered = this.state.totalRecovered;
+        const savedCountryDeaths = this.state.totalDeaths;
+        console.log(savedCountryName);
+        this.setState({
+            
+            country: savedCountryName,
+            totalConfirmed: savedCountryConfirmed,
+            totalRecovered: savedCountryRecovered,
+            totalDeaths: savedCountryDeaths,
+        })
+        const { user } = this.props.auth0;
+        axios.post(`http://localhost:3002/users?user=${user.email}`,{savedCountryName, savedCountryConfirmed, savedCountryRecovered, savedCountryDeaths}
+        )
+        .then(response => this.setState({
+            savedLocationsArray: response.data[0].savedLocations,
+        }))
     }
 
     daysHandler = (e) =>{
@@ -82,8 +131,16 @@ class CovidSummary extends React.Component {
     });
     }
 
-    componentDidMount() {
+    componentDidMount = async() => {
     this.getAllReport();
+    const { user } = this.props.auth0;
+    const userData = await axios.get(`http://localhost:3002/users?user=${user.email}`
+    )
+    console.log('found user data', userData)
+    this.setState({
+        savedLocationsArray: userData.data[0].savedLocations,
+    })
+    console.log(this.state.savedLocationsArray);
     }
     
     render() {
@@ -127,6 +184,9 @@ class CovidSummary extends React.Component {
                                 <option value='60'>Last 60 days</option>
                             </select>
                             </Form.Group>
+                            <button onClick= {this.saveHandler}>
+                                Save Country
+                            </button>
                         </Card.Body>
                         </Card>
                     </Form> 
@@ -158,9 +218,24 @@ class CovidSummary extends React.Component {
                     </Card>
                 </Col>
             </Row>
+
+            </Container>
+            <h1>Saved Locations</h1>
+            {this.state.savedLocationsArray && this.state.savedLocationsArray.map(location => <h3 key={location._id}>{location.locationName}
+            { this.state.indexShowing ?<div><p>Cases:{location.locationCases}</p>
+
+            <p>Recovered:{location.locationRecovered}</p>
+
+            <p>Deaths:{location.locationDeaths}</p> </div>:
+            ''}
+    
+            <button onClick={e => this.handleDeleteLocation(location._id)}>Delete</button>
+            <button onClick={this.toggleShowingData}>Show Saved Data
+            </button></h3>)}
+
             </>
         );
     }
 }
 
-export default CovidSummary;
+export default withAuth0(CovidSummary);
