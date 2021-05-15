@@ -9,7 +9,7 @@ class AboutUs extends React.Component {
           <CardDeck>
             <h1>Team: OPTIONS</h1>
             <Row>
-              <Card className="backCard" border="dark">
+              <Card className=" card backCard" border="dark">
                 <Col xs={6} md={4}>
                   <Image src="https://via.placeholder.com/150x150" thumbnail />
                 </Col>
