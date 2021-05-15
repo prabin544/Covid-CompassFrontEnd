@@ -6,7 +6,7 @@ class LoginButton extends React.Component{
     render() {
         // `this.props.auth0` has all the same properties as the `useAuth0` hook
         const {  loginWithRedirect } = this.props.auth0;
-        return <Button variant="primary" size="sm" onClick={() => loginWithRedirect()}>Log In</Button>
+        return <Button variant="secondary" size="sm" onClick={() => loginWithRedirect()}>Log In</Button>
     }
 }
 export default withAuth0(LoginButton);

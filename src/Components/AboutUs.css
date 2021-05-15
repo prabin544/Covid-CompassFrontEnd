@@ -1,4 +1,14 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(236, 228, 155, 0.125);
+  border-radius: .25rem;
+}
 .backCard{
-  background-color:rgb(233, 196, 106);
+  background-color:rgb(175, 208, 228);
   padding: 2%;
 }

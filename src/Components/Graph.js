@@ -36,8 +36,8 @@ class Graph extends React.Component {
         </div>
         <Line style ={{ 
             width: '600px',
-            height: '600px',
-            margin: '50px auto'
+            height: '800px',
+            margin: '20px 10px 10px 110px'
         }}
         data={data} options={options} />
         

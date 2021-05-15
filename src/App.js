@@ -6,12 +6,14 @@ import Navigation from './Components/Navigation';
 import { withAuth0 } from '@auth0/auth0-react';
 import AboutUs from './Components/AboutUs';
 import CovidSummary from './Components/CovidSummary';
+import Donation from './Components/Donation';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+
 
 class App extends React.Component {
   
@@ -25,6 +27,9 @@ class App extends React.Component {
           <Route exact path="/">
             {isAuthenticated ? <CovidSummary /> : <AboutUs /> }
           </Route >
+          <Route exact path="/aboutus"><AboutUs /></Route >
+          <Route exact path="/covidpage"><CovidSummary /></Route >
+          <Route exact path="/donate"><Donation /></Route >
         </Switch>
         </IsLoadingAndError>
     </Router>

@@ -1,0 +1,19 @@
+h1{
+    font-family: 'Goblin One';
+    font-weight: bolder;
+}
+.numbers{
+    font-family: 'Ultra', serif;
+    font-weight: bolder;
+}
+.header{
+    font-family: 'Goblin One';
+    font-weight: bolder;
+}
+.jumbotron {
+    background-image: url('../assets/img/images.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
