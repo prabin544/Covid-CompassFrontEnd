@@ -219,7 +219,6 @@ class CovidSummary extends React.Component {
                 </Col>
             </Row>
 
-            </Container>
             <h1>Saved Locations</h1>
             {this.state.savedLocationsArray && this.state.savedLocationsArray.map(location => <h3 key={location._id}>{location.locationName}
             { this.state.indexShowing ?<div><p>Cases:{location.locationCases}</p>
