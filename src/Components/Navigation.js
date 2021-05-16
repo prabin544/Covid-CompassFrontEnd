@@ -35,7 +35,7 @@ class Navigation extends React.Component {
               <LogoutButton />
             </Nav>
           </> :
-            <Nav>
+            <Nav className='ml-auto'>
               <LoginButton />
             </Nav>
         }
