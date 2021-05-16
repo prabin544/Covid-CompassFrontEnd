@@ -188,7 +188,7 @@ class CovidSummary extends React.Component {
                             </select>
                             </Form.Group>
                             <button onClick= {this.saveHandler}>
-                                Save Country
+                                Save country
                             </button>
                         </Card.Body>
                         </Card>
