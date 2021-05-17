@@ -13,6 +13,7 @@ class CovidSummary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            totalAmt:0,
             days: 7,
             label: [],
             summary:{},
@@ -82,8 +83,26 @@ class CovidSummary extends React.Component {
     });
     }
 
+    getTotalAmt() {
+        axios.get('http://localhost:3001/amt').then(response => {
+            console.log(response.data);
+            this.setState({
+                totalAmt:response.data,
+                })
+        });
+        
+      }
+
+    setTotalAmt = (totalAmt) => {
+        console.log(totalAmt);
+        this.setState({
+          totalAmt: totalAmt
+        })
+      }
+
     componentDidMount() {
     this.getAllReport();
+    this.getTotalAmt();
     }
     
     render() {
@@ -95,8 +114,8 @@ class CovidSummary extends React.Component {
                     <Row>
                         <Col sm={10}><h1>{this.state.country === '' ? 'World Wide' : this.state.country }</h1></Col>
                         <Col sm={2}>
-                            💰<NumberFormat className='numbers'  value=' 1235314' displayType={'text'} thousandSeparator={true} />
-                            <Donation variant="secondary">Donate</Donation>
+                            💰<NumberFormat className='numbers'  value={this.state.totalAmt} displayType={'text'} thousandSeparator={true} />
+                            <Donation updatetotalAmt={this.setTotalAmt} variant="secondary">Donate</Donation>
                         </Col>
                     </Row>
                 </Container>

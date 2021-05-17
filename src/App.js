@@ -21,7 +21,7 @@ class App extends React.Component {
     const { isAuthenticated } = this.props.auth0;
     return (
     <Router>
-      <Navigation/>
+      <Navigation />
         <IsLoadingAndError>
           <Switch>
           <Route exact path="/">

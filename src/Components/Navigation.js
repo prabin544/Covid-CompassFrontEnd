@@ -5,6 +5,7 @@ import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import LoginButton from "./LoginButton"
 import { withAuth0 } from '@auth0/auth0-react';
 import LogoutButton from './LogoutButton'
+import background from '../assets/img/background.jpg'
 
 class Navigation extends React.Component {
 
@@ -27,17 +28,19 @@ class Navigation extends React.Component {
           <>
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
-              <Nav.Link as={Link} to="/covidpage" >Covid Tracker</Nav.Link>
+                <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
+                <Nav.Link as={Link} to="/covidpage" >Covid Tracker</Nav.Link>
+              </Nav>
+              <Nav>
+                <LogoutButton />
               </Nav>
             </Navbar.Collapse>
-            <Nav>
-              <LogoutButton />
-            </Nav>
           </> :
-            <Nav className='ml-auto'>
-              <LoginButton />
-            </Nav>
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className='ml-auto'>
+                <LoginButton />
+              </Nav>
+            </Navbar.Collapse>
         }
       </Navbar>
       </>

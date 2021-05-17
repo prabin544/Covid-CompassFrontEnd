@@ -12,10 +12,8 @@ class Donation extends React.Component {
     super(props);
 
     this.state = {
-      description: '',
-      books: [],
-      name: '',
-      status:'',
+      amt: '',
+      totalAmt:'',
       show: false
     }
   }
@@ -34,55 +32,45 @@ class Donation extends React.Component {
     })
   }
 
-  handleNameInput = (e) => {
-    this.setState({name: e.target.value});
+  getAmt = (e) => {
+    console.log(e.target.value)
+    this.setState({amt: e.target.value});
   }
-  handleDescriptionInput = (e) => {
-    this.setState({description: e.target.value});
-  }
-  handleStatusInput = (e) => {
-    this.setState({status: e.target.value});
-  }
-  handleFormSubmit = (e) => {
-    e.preventDefault();
-    this.fetchUserData();
-  }
-  fetchUserData = () => {
 
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/users`/this.props.email)
-    .then(serverResponse => {
-      console.log(serverResponse.data);
-      this.setState({
-        books: serverResponse.data[0].books
-      })
+  getTotalAmt() {
+    axios.get('http://localhost:3001/amt').then(response => {
+        console.log(response.data);
+        this.setState({
+            totalAmt:response.data,
+            })
+        this.props.updatetotalAmt(this.state.totalAmt)
     });
+    
   }
 
-  handleCreateBook = (e) => {
+  handleCreateTotalAmt = (e) => {
     e.preventDefault();
-    console.log('name', this.state.name, 'description', this.state.description, 'status', this.state.status, 'email', this.props.email);
+    console.log('amt', this.state.amt);
     // make the request to the server with the info the user typed in
-    axios.post('http://localhost:3001/books', {
-      email: this.props.email,
-      description: this.state.description,
-      status: this.state.status,
-      name: this.state.name
+    axios.post('http://localhost:3001/amt', {
+      amt: this.state.amt
     }).then( response => {
       console.log(response.data);
-      console.log(this.state);
-      this.props.updatebooks(response.data)
+      console.log(this.state.amt);
+      this.getTotalAmt()
       this.handleClose();
     });
   }
+
+  
 
   render() {
     const { user } = this.props.auth0;
     return(
       <>
-        <button className="button" onClick={this.handleShow}>Donate</button>
-        {/* <Button variant="primary" onClick={this.handleShow}>
+        <Button variant="primary" onClick={this.handleShow}>
           Donate
-        </Button> */}
+        </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
@@ -102,10 +90,10 @@ class Donation extends React.Component {
                   </Row>
                 </Container>
                 </Col>
-                <Col sm={4} className="amtBtn">
-                    <Button variant="primary" size="lg" active style={{ flex: 1, marginBottom: 5 }} className='numbers'>$30</Button>
-                    <Button variant="primary" size="lg" active style={{ flex: 1, marginBottom: 5 }} className='numbers'>$50</Button>
-                    <Button variant="primary" size="lg" active style={{ flex: 1 }} className='numbers'>$100</Button>
+                <Col sm={4} className="amtBtn" >
+                    <Button variant="primary" size="lg"  onClick={this.getAmt} value='30' active style={{ flex: 1, marginBottom: 5 }} className='numbers'>$30</Button>
+                    <Button variant="primary" size="lg" onClick={this.getAmt} value='50' active style={{ flex: 1, marginBottom: 5 }} className='numbers'>$50</Button>
+                    <Button variant="primary" size="lg" onClick={this.getAmt} value='100' active style={{ flex: 1 }} className='numbers'>$100</Button>
                 </Col>
             </Row>
             <Form.Group controlId="formBasicCheckbox">
@@ -117,7 +105,9 @@ class Donation extends React.Component {
             <Form.Group controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Add Me To Email List" />
             </Form.Group>
-                <button type="submit" className="myButton">Submit</button>
+                <form onSubmit={this.handleCreateTotalAmt} >
+                  <button type="submit" className="myButton">Submit</button>
+                </form>
           </Container>
           </Modal.Body>
           <Modal.Footer>
