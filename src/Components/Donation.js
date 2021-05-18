@@ -77,13 +77,14 @@ class Donation extends React.Component {
 
   render() {
     const { user } = this.props.auth0;
+    console.log(this.props.auth0);
     return(
       <>
         <button className="button" onClick={this.handleShow}>Donate</button>
         {/* <Button variant="primary" onClick={this.handleShow}>
           Donate
         </Button> */}
-
+      
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Great! {user.name}</Modal.Title>
@@ -125,7 +126,7 @@ class Donation extends React.Component {
               Close
             </Button>
           </Modal.Footer>
-        </Modal>
+        </Modal> 
       </>
     )
   }

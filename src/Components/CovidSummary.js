@@ -62,6 +62,13 @@ class CovidSummary extends React.Component {
         })
     }
 
+    toggleHidingData = () => {
+        this.setState({
+            indexShowing: false,
+        })
+    }
+
+
     toggleShowingData = () => {
         this.setState({
             indexShowing: true,
@@ -246,8 +253,9 @@ class CovidSummary extends React.Component {
                                             <p>Deaths:{location.locationDeaths}</p>
                                         </Card.Text> :
                                         ''}
-                                    <Button onClick={e => this.handleDeleteLocation(location._id)}>Delete</Button>
+                                    <Button onClick={this.toggleHidingData}>Hide Saved Data</Button>
                                     <Button onClick={this.toggleShowingData}>Show Saved Data</Button>
+                                    <Button onClick={e => this.handleDeleteLocation(location._id)}>Delete</Button>
                                 </Card.Body>
                             </Card>)}
                     </CardDeck>
