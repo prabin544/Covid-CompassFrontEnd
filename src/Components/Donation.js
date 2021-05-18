@@ -6,6 +6,8 @@ import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react';
 import './Donation.css'
 
+const API_SERVER = process.env.REACT_APP_API;
+
 class Donation extends React.Component {
   
   constructor(props) {
@@ -38,7 +40,7 @@ class Donation extends React.Component {
   }
 
   getTotalAmt() {
-    axios.get('http://localhost:3001/amt').then(response => {
+    axios.get(`${API_SERVER}/amt`).then(response => {
         console.log(response.data);
         this.setState({
             totalAmt:response.data,
@@ -52,7 +54,7 @@ class Donation extends React.Component {
     e.preventDefault();
     console.log('amt', this.state.amt);
     // make the request to the server with the info the user typed in
-    axios.post('http://localhost:3001/amt', {
+    axios.post(`${API_SERVER}/amt`, {
       amt: this.state.amt
     }).then( response => {
       console.log(response.data);
