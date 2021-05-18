@@ -31,14 +31,15 @@ class Graph extends React.Component {
 
     return (
       <>
-        <div className='header'>
+        <div className='headerGraph'>
 
         </div>
-        <Line style ={{ 
-             width: '600px',
-             height: '600px',
-             margin: '50px auto'
-        }}
+        <Line 
+        // style ={{ 
+        //      width: '50px, auto',
+        //      height: '50px, auto',
+        //      marginLeft: '100px'
+        // }}
         data={data} options={options} />
         
       </>
