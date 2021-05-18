@@ -159,19 +159,12 @@ class CovidSummary extends React.Component {
                     </Container>
                 </Jumbotron>
                 <Container fluid>
-                    <Row
-                    // style={{ display: 'flex', flexWrap: 'wrap', alignContent: 'baseline', justifyContent: 'space-evenly' }}
-                    >
-                        <Col md={3} style={{ marginTop: 30 }}
-                        // active style={{ margin: 'auto' }}
-                        >
+                    <Row>
+                        <Col md={3} style={{ marginTop: 30 }}>
                             <Form data-testid="add-form" >
-                                <Card border="dark"
-                                // style={{ width: '17rem', margin: 'auto' }}
-                                >
+                                <Card border="dark">
                                     <Card.Header className='header'>Find Cases By Country</Card.Header>
                                     <Card.Body>
-
                                         <Form.Group>
                                             <Form.Label>Country</Form.Label>
                                             <select value={this.state.country} onChange={this.coutryHandler}>
@@ -205,25 +198,19 @@ class CovidSummary extends React.Component {
                             />
                         </Col>
                         <Col md={3} style={{ textAlign: 'center' }}>
-                            <Card border="dark" style={{ marginBottom: 10 }}
-                            // active style={{ flex: 1, width: '14rem', margin: 'auto', marginBottom: 10 }}
-                            >
+                            <Card border="dark" style={{ marginBottom: 10 }}>
                                 <Card.Header className='header' >Confirmed</Card.Header>
                                 <Card.Body>
                                     <Card.Title > <NumberFormat className='numbers' value={this.state.totalConfirmedCases} displayType={'text'} thousandSeparator={true} />  </Card.Title>
                                 </Card.Body>
                             </Card>
-                            <Card border="dark" style={{ marginBottom: 10 }}
-                            // active style={{ flex: 1, width: '17rem', margin: 'auto', marginBottom: 10 }}
-                            >
+                            <Card border="dark" style={{ marginBottom: 10 }}>
                                 <Card.Header className='header'>Total Recovered</Card.Header>
                                 <Card.Body>
                                     <Card.Title> <NumberFormat className='numbers' value={this.state.totalRecovered} displayType={'text'} thousandSeparator={true} /> </Card.Title>
                                 </Card.Body>
                             </Card>
-                            <Card border="dark" style={{ marginBottom: 10 }}
-                            // active style={{ flex: 1, width: '17rem', margin: 'auto', marginBottom: 10 }}
-                            >
+                            <Card border="dark" style={{ marginBottom: 10 }}>
                                 <Card.Header className='header'>Total Deaths</Card.Header>
                                 <Card.Body>
                                     <Card.Title><NumberFormat className='numbers' value={this.state.totalDeaths} displayType={'text'} thousandSeparator={true} /> </Card.Title>

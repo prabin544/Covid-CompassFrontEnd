@@ -1,15 +1,22 @@
-.card {
-  margin-bottom: 10px; 
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-clip: border-box;
-  border: 1px solid rgba(236, 228, 155, 0.125);
-  border-radius: .25rem;
-  background-color:#CBDBDD;
-  padding: 2%;
+.backCard{
+  padding: 10px;
+  background-color: #CBDBDD;
+  box-shadow: 2px 2px 2px 1px #002F49;
 }
 
+.teamName{
+  text-align: center;
+  padding: 10px;
+}
+.aboutCardDeck{
+  align-items: center;
+}
 
+.card-img{
+  box-shadow: 2px 2px 2px 1px #002F49;
+}
+
+h5{
+    display: inline;
+    
+}
