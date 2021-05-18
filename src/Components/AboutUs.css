@@ -1,4 +1,5 @@
 .card {
+  margin-bottom: 10px; 
   position: relative;
   display: flex;
   flex-direction: column;
@@ -7,8 +8,8 @@
   background-clip: border-box;
   border: 1px solid rgba(236, 228, 155, 0.125);
   border-radius: .25rem;
-}
-.backCard{
-  background-color:#E1D8BF;
+  background-color:#CBDBDD;
   padding: 2%;
 }
+
+
