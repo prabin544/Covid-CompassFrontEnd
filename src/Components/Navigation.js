@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navigation.css';
 import { Link } from "react-router-dom";
-import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import LoginButton from "./LoginButton"
 import { withAuth0 } from '@auth0/auth0-react';
 import LogoutButton from './LogoutButton'
