@@ -14,6 +14,7 @@ class CovidSummary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            totalAmt:0,
             days: 7,
             label: [],
             summary: {},
@@ -26,6 +27,16 @@ class CovidSummary extends React.Component {
             // savedLocationsArray: [],
         };
     }
+
+    getTotalAmt() {
+        axios.get('http://localhost:3001/amt').then(response => {
+            console.log(response.data);
+            this.setState({
+                totalAmt:response.data,
+                })
+        });
+        
+      }
 
     formatDate = (date) => {
         const d = new Date(date);
@@ -83,7 +94,7 @@ class CovidSummary extends React.Component {
             totalDeaths: savedCountryDeaths,
         })
         const { user } = this.props.auth0;
-        axios.post(`http://localhost:3002/users?user=${user.email}`, { savedCountryName, savedCountryConfirmed, savedCountryRecovered, savedCountryDeaths }
+        axios.post(`http://localhost:3001/users?user=${user.email}`, { savedCountryName, savedCountryConfirmed, savedCountryRecovered, savedCountryDeaths }
         )
             .then(response => this.setState({
                 savedLocationsArray: response.data[0].savedLocations,
@@ -131,10 +142,18 @@ class CovidSummary extends React.Component {
         });
     }
 
+    setTotalAmt = (totalAmt) => {
+        console.log(totalAmt);
+        this.setState({
+          totalAmt: totalAmt
+        })
+      }
+
     componentDidMount = async () => {
         this.getAllReport();
+        this.getTotalAmt();
         const { user } = this.props.auth0;
-        const userData = await axios.get(`http://localhost:3002/users?user=${user.email}`
+        const userData = await axios.get(`http://localhost:3001/users?user=${user.email}`
         )
         console.log('found user data', userData)
         this.setState({
@@ -152,8 +171,8 @@ class CovidSummary extends React.Component {
                         <Row>
                             <Col sm={10}><h1 className='WWC'>{this.state.country === '' ? 'Covid-Compass' : this.state.country}</h1></Col>
                             <Col sm={2}>
-                                💰<NumberFormat className='numbers' value=' 1235314' displayType={'text'} thousandSeparator={true} />
-                                <Donation variant="secondary">Donate</Donation>
+                                💰<NumberFormat className='numbers' value={this.state.totalAmt} displayType={'text'} thousandSeparator={true} />
+                                <Donation  updatetotalAmt={this.setTotalAmt} variant="secondary">Donate</Donation>
                             </Col>
                         </Row>
                     </Container>
