@@ -23,7 +23,7 @@ class CovidSummary extends React.Component {
             country: '',
             coronaCountArray: [],
             indexShowing: false,
-            // savedLocationsArray: [],
+            savedLocationsArray: [],
         };
     }
 
@@ -48,14 +48,14 @@ class CovidSummary extends React.Component {
 
     savedCountryHandler = (locationName) => {
         const { user } = this.props.auth0;
-        axios.get(`http://localhost:3002/users/${locationName}?user=${user.email}`).then(responseData => {
+        axios.get(`http://localhost:3001/users/${locationName}?user=${user.email}`).then(responseData => {
             console.log(responseData.data);
         })
     }
 
     handleDeleteLocation = (id) => {
         const { user } = this.props.auth0;
-        axios.delete(`http://localhost:3002/users/${id}?user=${user.email}`).then(responseData => {
+        axios.delete(`http://localhost:3001/users/${id}?user=${user.email}`).then(responseData => {
             this.setState({
                 savedLocationsArray: responseData.data,
             })
@@ -90,7 +90,7 @@ class CovidSummary extends React.Component {
             totalDeaths: savedCountryDeaths,
         })
         const { user } = this.props.auth0;
-        axios.post(`http://localhost:3002/users?user=${user.email}`, { savedCountryName, savedCountryConfirmed, savedCountryRecovered, savedCountryDeaths }
+        axios.post(`http://localhost:3001/users?user=${user.email}`, { savedCountryName, savedCountryConfirmed, savedCountryRecovered, savedCountryDeaths }
         )
             .then(response => this.setState({
                 savedLocationsArray: response.data[0].savedLocations,
@@ -141,7 +141,7 @@ class CovidSummary extends React.Component {
     componentDidMount = async () => {
         this.getAllReport();
         const { user } = this.props.auth0;
-        const userData = await axios.get(`http://localhost:3002/users?user=${user.email}`
+        const userData = await axios.get(`http://localhost:3001/users/${user.email}`
         )
         console.log('found user data', userData)
         this.setState({
