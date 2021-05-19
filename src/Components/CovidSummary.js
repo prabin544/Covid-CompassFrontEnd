@@ -9,14 +9,11 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Donation from './Donation'
 import './CovidSummary.css'
 
-const API_SERVER = process.env.REACT_APP_API;
-
 class CovidSummary extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            totalAmt:0,
             days: 7,
             label: [],
             summary: {},
@@ -29,16 +26,6 @@ class CovidSummary extends React.Component {
             // savedLocationsArray: [],
         };
     }
-
-    getTotalAmt() {
-        axios.get(`${API_SERVER}/amt`).then(response => {
-            console.log(response.data);
-            this.setState({
-                totalAmt:response.data,
-                })
-        });
-        
-      }
 
     formatDate = (date) => {
         const d = new Date(date);
@@ -61,14 +48,14 @@ class CovidSummary extends React.Component {
 
     savedCountryHandler = (locationName) => {
         const { user } = this.props.auth0;
-        axios.get(`${API_SERVER}/users/${locationName}?user=${user.email}`).then(responseData => {
+        axios.get(`http://localhost:3002/users/${locationName}?user=${user.email}`).then(responseData => {
             console.log(responseData.data);
         })
     }
 
     handleDeleteLocation = (id) => {
         const { user } = this.props.auth0;
-        axios.delete(`${API_SERVER}/users/${id}?user=${user.email}`).then(responseData => {
+        axios.delete(`http://localhost:3002/users/${id}?user=${user.email}`).then(responseData => {
             this.setState({
                 savedLocationsArray: responseData.data,
             })
@@ -103,7 +90,7 @@ class CovidSummary extends React.Component {
             totalDeaths: savedCountryDeaths,
         })
         const { user } = this.props.auth0;
-        axios.post(`${API_SERVER}/users?user=${user.email}`, { savedCountryName, savedCountryConfirmed, savedCountryRecovered, savedCountryDeaths }
+        axios.post(`http://localhost:3002/users?user=${user.email}`, { savedCountryName, savedCountryConfirmed, savedCountryRecovered, savedCountryDeaths }
         )
             .then(response => this.setState({
                 savedLocationsArray: response.data[0].savedLocations,
@@ -151,18 +138,10 @@ class CovidSummary extends React.Component {
         });
     }
 
-    setTotalAmt = (totalAmt) => {
-        console.log(totalAmt);
-        this.setState({
-          totalAmt: totalAmt
-        })
-      }
-
     componentDidMount = async () => {
         this.getAllReport();
-        this.getTotalAmt();
         const { user } = this.props.auth0;
-        const userData = await axios.get(`${API_SERVER}/users?user=${user.email}`
+        const userData = await axios.get(`http://localhost:3002/users?user=${user.email}`
         )
         console.log('found user data', userData)
         this.setState({
@@ -180,26 +159,19 @@ class CovidSummary extends React.Component {
                         <Row>
                             <Col sm={10}><h1 className='WWC'>{this.state.country === '' ? 'Covid-Compass' : this.state.country}</h1></Col>
                             <Col sm={2}>
-                                💰<NumberFormat className='numbers' value={this.state.totalAmt} displayType={'text'} thousandSeparator={true} />
-                                <Donation  updatetotalAmt={this.setTotalAmt} variant="secondary">Donate</Donation>
+                                💰<NumberFormat className='numbers' value=' 1235314' displayType={'text'} thousandSeparator={true} />
+                                <Donation variant="secondary">Donate</Donation>
                             </Col>
                         </Row>
                     </Container>
                 </Jumbotron>
                 <Container fluid>
-                    <Row
-                    // style={{ display: 'flex', flexWrap: 'wrap', alignContent: 'baseline', justifyContent: 'space-evenly' }}
-                    >
-                        <Col md={3} style={{ marginTop: 30 }}
-                        // active style={{ margin: 'auto' }}
-                        >
+                    <Row>
+                        <Col md={3} style={{ marginTop: 30 }}>
                             <Form data-testid="add-form" >
-                                <Card border="dark"
-                                // style={{ width: '17rem', margin: 'auto' }}
-                                >
+                                <Card border="dark">
                                     <Card.Header className='header'>Find Cases By Country</Card.Header>
                                     <Card.Body>
-
                                         <Form.Group>
                                             <Form.Label>Country</Form.Label>
                                             <select value={this.state.country} onChange={this.coutryHandler}>
@@ -233,25 +205,19 @@ class CovidSummary extends React.Component {
                             />
                         </Col>
                         <Col md={3} style={{ textAlign: 'center' }}>
-                            <Card border="dark" style={{ marginBottom: 10 }}
-                            // active style={{ flex: 1, width: '14rem', margin: 'auto', marginBottom: 10 }}
-                            >
+                            <Card border="dark" style={{ marginBottom: 10 }}>
                                 <Card.Header className='header' >Confirmed</Card.Header>
                                 <Card.Body>
                                     <Card.Title > <NumberFormat className='numbers' value={this.state.totalConfirmedCases} displayType={'text'} thousandSeparator={true} />  </Card.Title>
                                 </Card.Body>
                             </Card>
-                            <Card border="dark" style={{ marginBottom: 10 }}
-                            // active style={{ flex: 1, width: '17rem', margin: 'auto', marginBottom: 10 }}
-                            >
+                            <Card border="dark" style={{ marginBottom: 10 }}>
                                 <Card.Header className='header'>Total Recovered</Card.Header>
                                 <Card.Body>
                                     <Card.Title> <NumberFormat className='numbers' value={this.state.totalRecovered} displayType={'text'} thousandSeparator={true} /> </Card.Title>
                                 </Card.Body>
                             </Card>
-                            <Card border="dark" style={{ marginBottom: 10 }}
-                            // active style={{ flex: 1, width: '17rem', margin: 'auto', marginBottom: 10 }}
-                            >
+                            <Card border="dark" style={{ marginBottom: 10 }}>
                                 <Card.Header className='header'>Total Deaths</Card.Header>
                                 <Card.Body>
                                     <Card.Title><NumberFormat className='numbers' value={this.state.totalDeaths} displayType={'text'} thousandSeparator={true} /> </Card.Title>
