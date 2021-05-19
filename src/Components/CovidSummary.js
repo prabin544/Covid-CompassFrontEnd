@@ -138,8 +138,20 @@ class CovidSummary extends React.Component {
         });
     }
 
+    fetchUserData = () => {
+        const { user } = this.props.auth0;
+        axios.get(`http://localhost:3001/users/${user.email}`)
+        .then(serverResponse => {
+          console.log(serverResponse.data);
+          this.setState({
+            savedLocationsArray: serverResponse.data[0].savedLocationsArray
+          })
+        });
+      }
+
     componentDidMount = async () => {
         this.getAllReport();
+        this.fetchUserData();
         const { user } = this.props.auth0;
         const userData = await axios.get(`http://localhost:3001/users/${user.email}`
         )
@@ -147,7 +159,6 @@ class CovidSummary extends React.Component {
         this.setState({
             savedLocationsArray: userData.data[0].savedLocations,
         })
-        console.log(this.state.savedLocationsArray);
     }
 
     render() {
