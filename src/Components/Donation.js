@@ -77,7 +77,11 @@ class Donation extends React.Component {
 
   render() {
     const { user } = this.props.auth0;
+<<<<<<< HEAD
     console.log(this.props.auth0);
+=======
+    console.log(user);
+>>>>>>> louis-11
     return(
       <>
         <button className="button" onClick={this.handleShow}>Donate</button>
