@@ -29,6 +29,7 @@ class Navigation extends React.Component {
               <Nav className="mr-auto">
               <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
               <Nav.Link as={Link} to="/covidpage" >Covid Tracker</Nav.Link>
+              <Nav.Link as={Link} to="/saved" >Saved Country</Nav.Link>
               </Nav>
             </Navbar.Collapse>
             <Nav>

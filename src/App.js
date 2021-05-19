@@ -8,6 +8,7 @@ import AboutUs from './Components/AboutUs';
 import CovidSummary from './Components/CovidSummary';
 // import SavedCities from './Components/SavedCities.js'
 import Donation from './Components/Donation';
+import SavedCountry from './Components/SavedCountry';
 
 import {
   BrowserRouter as Router,
@@ -32,6 +33,7 @@ class App extends React.Component {
           <Route exact path="/aboutus"><AboutUs /></Route >
           <Route exact path="/covidpage"><CovidSummary /></Route >
           <Route exact path="/donate"><Donation /></Route >
+          <Route exact path="/saved"><SavedCountry /></Route >
         </Switch>
         </IsLoadingAndError>
     </Router>

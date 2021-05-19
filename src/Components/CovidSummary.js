@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Container, Form, Button, Row, Col, CardDeck } from 'react-bootstrap';
+import { Card, Container, Form, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react'
 // import SearchCountry from './SearchCountry';
@@ -7,6 +7,7 @@ import Graph from './Graph';
 import NumberFormat from 'react-number-format';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Donation from './Donation'
+import SavedCountry from './SavedCountry'
 import './CovidSummary.css'
 
 class CovidSummary extends React.Component {
@@ -14,6 +15,7 @@ class CovidSummary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            totalAmt:0,
             days: 7,
             label: [],
             summary: {},
@@ -138,31 +140,50 @@ class CovidSummary extends React.Component {
         });
     }
 
+    getTotalAmt() {
+        axios.get('http://localhost:3001/amt').then(response => {
+            console.log(response.data);
+            this.setState({
+                totalAmt:response.data,
+                })
+        });
+        
+    }
+
     fetchUserData = () => {
         const { user } = this.props.auth0;
         axios.get(`http://localhost:3001/users/${user.email}`)
         .then(serverResponse => {
-          console.log(serverResponse.data);
+          console.log(serverResponse.data[0].savedLocations);
+          const savedLocations = serverResponse.data[0].savedLocations
           this.setState({
-            savedLocationsArray: serverResponse.data[0].savedLocationsArray
+            savedLocationsArray: savedLocations
           })
         });
       }
+    
+    setTotalAmt = (totalAmt) => {
+    console.log(totalAmt);
+    this.setState({
+        totalAmt: totalAmt
+    })
+    }
 
     componentDidMount = async () => {
         this.getAllReport();
         this.fetchUserData();
-        const { user } = this.props.auth0;
-        const userData = await axios.get(`http://localhost:3001/users/${user.email}`
-        )
-        console.log('found user data', userData)
-        this.setState({
-            savedLocationsArray: userData.data[0].savedLocations,
-        })
+        this.getTotalAmt();
+        // const { user } = this.props.auth0;
+        // const userData = await axios.get(`http://localhost:3001/users/${user.email}`
+        // )
+        // console.log('found user data', userData)
+        // this.setState({
+        //     savedLocationsArray: userData.data[0].savedLocations,
+        // })
     }
 
     render() {
-        console.log(this.state.coronaCountArray)
+        console.log(this.state.savedLocationsArray)
         return (
             <>
                 <Jumbotron fluid>
@@ -170,8 +191,8 @@ class CovidSummary extends React.Component {
                         <Row>
                             <Col sm={10}><h1 className='WWC'>{this.state.country === '' ? 'Covid-Compass' : this.state.country}</h1></Col>
                             <Col sm={2}>
-                                💰<NumberFormat className='numbers' value=' 1235314' displayType={'text'} thousandSeparator={true} />
-                                <Donation variant="secondary">Donate</Donation>
+                                💰<NumberFormat className='numbers' value={this.state.totalAmt} displayType={'text'} thousandSeparator={true} />
+                                <Donation updatetotalAmt={this.setTotalAmt} variant="secondary">Donate</Donation>
                             </Col>
                         </Row>
                     </Container>
@@ -202,9 +223,7 @@ class CovidSummary extends React.Component {
                                                 <option value='60'>Last 60 days</option>
                                             </select>
                                         </Form.Group>
-                                        <button onClick={this.saveHandler}>
-                                            Save country
-                            </button>
+                                        <button onClick={this.saveHandler}>Save country</button>
                                     </Card.Body>
                                 </Card>
                             </Form>
@@ -237,27 +256,7 @@ class CovidSummary extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-                <Container fluid>
-                    <h1>Saved Locations</h1>
-                    <CardDeck>
-                        {this.state.savedLocationsArray && this.state.savedLocationsArray.map(location =>
-                            <Card key={location._id}>
-                                <Card.Body>
-                                    <Card.Title>{location.locationName}</Card.Title>
-                                    {this.state.indexShowing ?
-                                        <Card.Text>
-                                            <p>Cases:{location.locationCases}</p>
-                                            <p>Recovered:{location.locationRecovered}</p>
-                                            <p>Deaths:{location.locationDeaths}</p>
-                                        </Card.Text> :
-                                        ''}
-                                    <Button onClick={this.toggleHidingData}>Hide Saved Data</Button>
-                                    <Button onClick={this.toggleShowingData}>Show Saved Data</Button>
-                                    <Button onClick={e => this.handleDeleteLocation(location._id)}>Delete</Button>
-                                </Card.Body>
-                            </Card>)}
-                    </CardDeck>
-                </Container>
+                <SavedCountry savedLocationsArray={this.state.savedLocationsArray} handleDeleteLocation={this.handleDeleteLocation}/>
             </>
         );
     }
