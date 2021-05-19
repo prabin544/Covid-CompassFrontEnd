@@ -34,19 +34,21 @@ React, Auth0, Node, Axios, React-Bootstrap, Mongoose, MongoDB
 ## Imgs
 Welcome to the Landing page! The USER clicks login and authrorizes Auth0 to access google for authentication. 
 
-![screenshot]()
+![screenshot](public/imgs/landing.png?raw=true "Initial Page")
+
+![screenshot](public/imgs/auth0.png?raw=true "Initial Page")
 
 The main page, or homescreen, is where the USER can view  form to search for covid cases by Country name or state if USA is selected as country.
 
-![screenshot]()
+![screenshot](public/imgs/main.png?raw=true "Initial Page")
 
-The GRAPH page - where the data is rendered using API call. Users will be able to search for dieerent country or save rendered data.
+The GRAPH page - where the data is rendered using API call. Users will be able to search for different countries or save rendered data.
 
-![screenshot]()
+![screenshot](public/imgs/graph.png?raw=true "Initial Page")
 
 User can click LogOut button which redirects them to Landing page.
 
-![screenshot]()
+![screenshot](public/imgs/logout.png?raw=true "Initial Page")
 
 ### FlowChart
  
@@ -59,6 +61,6 @@ User can click LogOut button which redirects them to Landing page.
 
 ## Links
 
-[Link to Netlify]()
+[Link to Netlify](https://competent-heisenberg-10c4f7.netlify.app/)
 
 
