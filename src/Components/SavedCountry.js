@@ -2,6 +2,8 @@ import React from 'react';
 import {  Button } from 'react-bootstrap';
 import { Container, Accordion, Card } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react'
+import './SavedCountry.css'
+import NumberFormat from 'react-number-format';
 
 class SavedCountry extends React.Component {
   
@@ -30,9 +32,9 @@ class SavedCountry extends React.Component {
                             </Card.Header>
                             <Accordion.Collapse eventKey="0">
                                 <Card.Body>
-                                    <p>Cases:{location.locationCases}</p>
-                                    <p>Cases:{location.locationRecovered}</p>
-                                    <p>Cases:{location.locationDeaths}</p>
+                                    <p>Total Confirmed Cases: <NumberFormat className='numbers' value={location.locationCases} displayType={'text'} thousandSeparator={true} /></p>
+                                    <p>Total Recovered Cases: <NumberFormat className='numbers' value={location.locationRecovered} displayType={'text'} thousandSeparator={true} /></p>
+                                    <p>Total Death Cases: <NumberFormat className='numbers' value={location.locationDeaths} displayType={'text'} thousandSeparator={true} /></p>
                                 </Card.Body>
                             </Accordion.Collapse>
                         </Card>
