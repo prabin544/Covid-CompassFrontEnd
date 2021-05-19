@@ -10,6 +10,8 @@ import Donation from './Donation'
 import SavedCountry from './SavedCountry'
 import './CovidSummary.css'
 
+const API_SERVER = process.env.REACT_APP_API;
+
 class CovidSummary extends React.Component {
 
     constructor(props) {
@@ -50,14 +52,14 @@ class CovidSummary extends React.Component {
 
     savedCountryHandler = (locationName) => {
         const { user } = this.props.auth0;
-        axios.get(`http://localhost:3001/users/${locationName}?user=${user.email}`).then(responseData => {
+        axios.get(`${API_SERVER}/users/${locationName}?user=${user.email}`).then(responseData => {
             console.log(responseData.data);
         })
     }
 
     handleDeleteLocation = (id) => {
         const { user } = this.props.auth0;
-        axios.delete(`http://localhost:3001/users/${id}?user=${user.email}`).then(responseData => {
+        axios.delete(`${API_SERVER}/users/${id}?user=${user.email}`).then(responseData => {
             this.setState({
                 savedLocationsArray: responseData.data,
             })
@@ -92,7 +94,7 @@ class CovidSummary extends React.Component {
             totalDeaths: savedCountryDeaths,
         })
         const { user } = this.props.auth0;
-        axios.post(`http://localhost:3001/users?user=${user.email}`, { savedCountryName, savedCountryConfirmed, savedCountryRecovered, savedCountryDeaths }
+        axios.post(`${API_SERVER}/users?user=${user.email}`, { savedCountryName, savedCountryConfirmed, savedCountryRecovered, savedCountryDeaths }
         )
             .then(response => this.setState({
                 savedLocationsArray: response.data[0].savedLocations,
@@ -141,7 +143,7 @@ class CovidSummary extends React.Component {
     }
 
     getTotalAmt() {
-        axios.get('http://localhost:3001/amt').then(response => {
+        axios.get(`${API_SERVER}/amt`).then(response => {
             console.log(response.data);
             this.setState({
                 totalAmt:response.data,
@@ -152,7 +154,7 @@ class CovidSummary extends React.Component {
 
     fetchUserData = () => {
         const { user } = this.props.auth0;
-        axios.get(`http://localhost:3001/users/${user.email}`)
+        axios.get(`${API_SERVER}/users/${user.email}`)
         .then(serverResponse => {
           console.log(serverResponse.data[0].savedLocations);
           const savedLocations = serverResponse.data[0].savedLocations
