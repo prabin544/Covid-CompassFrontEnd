@@ -23,8 +23,6 @@ class Maps extends React.Component {
     }
 
     componentDidUpdate (){
-
-        console.log('did update', this.props.address);
         this.handleSelect(this.props.address);
 
     }
@@ -37,7 +35,6 @@ class Maps extends React.Component {
     geocodeByAddress(address)
         .then(results => getLatLng(results[0]))
         .then(latLng => {
-            console.log('Success', latLng)
             this.setState({address});
             this.setState({mapCenter: latLng});
         })
@@ -45,7 +42,6 @@ class Maps extends React.Component {
     };
     
     render() {
-        console.log(this.props)
         return (
             <div id='googleMap'>
                 <PlacesAutocomplete

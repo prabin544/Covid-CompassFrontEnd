@@ -21,7 +21,7 @@ class Navigation extends React.Component {
     return (
       <>
       <Navbar className="Nav" collapseOnSelect expand="lg" bg="" variant="dark">
-        <Navbar.Brand href="#home">Covid-Compass</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/covidpage">Covid-Compass</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         {isAuthenticated ?
           <>
