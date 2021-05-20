@@ -31,7 +31,7 @@ to help redesign the world so that everyone can do everything.</Card.Text>
                 </Col>
                 <Card.Body>
                   <Card.Title>Prabin Singh</Card.Title>
-                  <Card.Text>Hi, My name is Prabin Singh. I am from Keller, TX and computer science graduate from Southern Methodist University. Currently enrolled in Code Fellows as Full Stack Web Developer student. This is my first website and I will be adding different projects in portfolio section of this page as I make progress in my Class. So far this page contains three different application which has been developed using vanilla Js, jQuery for backend and HTML for front end. Styling has been embedded using css whereas there are few different frameworks used to give some effects and animation when page loads.</Card.Text>
+                  <Card.Text>Hi, My name is Prabin Singh, Full Stack Software Developer and DevOps Engineer. I am from Keller, TX and Computer Science graduate from Southern Methodist University. Currently I am working as DevOps Engineer at one of the fortune 500 company.</Card.Text>
                   <h5><a href="https://github.com/prabin544" atl="GitHubLink" style={{ color: "black" }}><FaGithubSquare /> </a></h5>
                   <h5><a href="link" atl="linkedinLink" style={{ color: "black" }}><FaLinkedin /></a></h5>
                 </Card.Body>
