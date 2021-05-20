@@ -1,38 +1,76 @@
 import React from 'react';
 import {  Button } from 'react-bootstrap';
-import { Container, Accordion, Card } from 'react-bootstrap';
+import { Container, Accordion, Card, Jumbotron } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react'
+import './SavedCountry.css'
+import NumberFormat from 'react-number-format';
+import axios from 'axios';
+
+const API_SERVER = process.env.REACT_APP_API;
 
 class SavedCountry extends React.Component {
-  
-  handleDelete = (id) => {
-    console.log(id)
-    this.props.handleDeleteLocation(id);
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            savedLocationsArray: [],
+        };
+    }
+
+    fetchUserData = () => {
+        const { user } = this.props.auth0;
+        const email = user.email;
+        axios.get(`${API_SERVER}/users/${email}`)
+        .then(serverResponse => {
+          console.log(serverResponse.data[0].savedLocations);
+          const savedLocations = serverResponse.data[0].savedLocations
+          this.setState({
+            savedLocationsArray: savedLocations
+          })
+        });
+      }
     
-  }
+    
+    handleDeleteLocation = (id) => {
+        const { user } = this.props.auth0;
+        axios.delete(`${API_SERVER}/users/${id}?user=${user.email}`).then(responseData => {
+            this.setState({
+                savedLocationsArray: responseData.data,
+            })
+        })
+    }
+
+    componentDidMount = async () => {
+        this.fetchUserData();
+    
+        }
+
   
 
   render() {
-    console.log(this.props)
+    console.log(this.state.savedLocationsArray)
     return (
-      
-        <Container>
+        <>
+        <Jumbotron fluid>
+        
+        </Jumbotron>
+        <Container >
             <h1>Saved Locations</h1>
                 {
-                    this.props.savedLocationsArray.map((location, _id) =>
-                    <Accordion>
+                    this.state.savedLocationsArray.map((location, _id) =>
+                    <Accordion >
                         <Card>
                             <Card.Header>
                                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
                                 {location.locationName}
                                 </Accordion.Toggle>
-                                <Button  onClick={() => this.handleDelete(location._id)} >Delete Item</Button>
+                                <Button  id='acc' onClick={() => this.handleDeleteLocation(location._id)} >Delete Country</Button>
                             </Card.Header>
                             <Accordion.Collapse eventKey="0">
                                 <Card.Body>
-                                    <p>Cases:{location.locationCases}</p>
-                                    <p>Cases:{location.locationRecovered}</p>
-                                    <p>Cases:{location.locationDeaths}</p>
+                                    <p>Total Confirmed Cases: <NumberFormat className='numbers' value={location.locationCases} displayType={'text'} thousandSeparator={true} /></p>
+                                    <p>Total Recovered Cases: <NumberFormat className='numbers' value={location.locationRecovered} displayType={'text'} thousandSeparator={true} /></p>
+                                    <p>Total Death Cases: <NumberFormat className='numbers' value={location.locationDeaths} displayType={'text'} thousandSeparator={true} /></p>
                                 </Card.Body>
                             </Accordion.Collapse>
                         </Card>
@@ -40,6 +78,8 @@ class SavedCountry extends React.Component {
                     )
                 }
         </Container>
+        
+        </>
     );
   }
 }

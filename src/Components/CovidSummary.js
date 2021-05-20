@@ -1,13 +1,12 @@
 import React from 'react';
-import { Card, Container, Form, Row, Col } from 'react-bootstrap';
+import { Card, Container, Form, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react'
-// import SearchCountry from './SearchCountry';
 import Graph from './Graph';
 import NumberFormat from 'react-number-format';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Donation from './Donation'
-import SavedCountry from './SavedCountry'
+import Maps from './Maps'
 import './CovidSummary.css'
 
 const API_SERVER = process.env.REACT_APP_API;
@@ -191,7 +190,7 @@ class CovidSummary extends React.Component {
                 <Jumbotron fluid>
                     <Container>
                         <Row>
-                            <Col sm={10}><h1 className='WWC'>{this.state.country === '' ? 'Covid-Compass' : this.state.country}</h1></Col>
+                            <Col sm={10}><h1 className='WWC'>{this.state.country === '' ? 'World Wide' : this.state.country}</h1></Col>
                             <Col sm={2}>
                                 💰<NumberFormat className='numbers' value={this.state.totalAmt} displayType={'text'} thousandSeparator={true} />
                                 <Donation updatetotalAmt={this.setTotalAmt} variant="secondary">Donate</Donation>
@@ -225,7 +224,8 @@ class CovidSummary extends React.Component {
                                                 <option value='60'>Last 60 days</option>
                                             </select>
                                         </Form.Group>
-                                        <button onClick={this.saveHandler}>Save country</button>
+                                        <Button  onClick={this.saveHandler} >Save country</Button>
+                                        
                                     </Card.Body>
                                 </Card>
                             </Form>
@@ -238,7 +238,7 @@ class CovidSummary extends React.Component {
                         </Col>
                         <Col md={3} style={{ textAlign: 'center' }}>
                             <Card border="dark" style={{ marginBottom: 10 }}>
-                                <Card.Header className='header' >Confirmed</Card.Header>
+                                <Card.Header className='header' >Total Confirmed</Card.Header>
                                 <Card.Body>
                                     <Card.Title > <NumberFormat className='numbers' value={this.state.totalConfirmedCases} displayType={'text'} thousandSeparator={true} />  </Card.Title>
                                 </Card.Body>
@@ -258,7 +258,8 @@ class CovidSummary extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-                <SavedCountry savedLocationsArray={this.state.savedLocationsArray} handleDeleteLocation={this.handleDeleteLocation}/>
+                <Maps address={this.state.country}/>
+                {/* <SavedCountry savedLocationsArray={this.state.savedLocationsArray} handleDeleteLocation={this.handleDeleteLocation}/> */}
             </>
         );
     }

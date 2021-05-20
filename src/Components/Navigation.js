@@ -31,14 +31,10 @@ class Navigation extends React.Component {
               <Nav.Link as={Link} to="/covidpage" >Covid Tracker</Nav.Link>
               <Nav.Link as={Link} to="/saved" >Saved Country</Nav.Link>
               </Nav>
+              <Nav><LogoutButton /></Nav>
             </Navbar.Collapse>
-            <Nav>
-              <LogoutButton />
-            </Nav>
           </> :
-            <Nav className='ml-auto'>
-              <LoginButton />
-            </Nav>
+            <Nav className='ml-auto'><LoginButton /></Nav>
         }
       </Navbar>
       </>
