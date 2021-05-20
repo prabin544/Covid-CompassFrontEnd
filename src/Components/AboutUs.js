@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, CardDeck, Row, Card, Col } from 'react-bootstrap';
+import { Container, CardDeck, Card, Col } from 'react-bootstrap';
 import './AboutUs.css'
 import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 
@@ -10,7 +10,6 @@ class AboutUs extends React.Component {
         <Container fluid="md">
           <h1 className="teamName">Team: OPTIONS</h1>
           <CardDeck className="aboutCardDeck">
-            <Row>
               <Card className="backCard" border="dark" >
                 <Col md={6}>
                   <Card.Img src="https://avatars.githubusercontent.com/u/75649765?v=4" />
@@ -50,8 +49,6 @@ to help redesign the world so that everyone can do everything.</Card.Text>
                   <h5><a href="https://www.linkedin.com/in/louis-lassegue-4269531bb/" atl="linkedinLink" style={{ color: "black" }}><FaLinkedin /></a></h5>
                 </Card.Body>
               </Card>
-
-            </Row>
           </CardDeck>
         </Container>
       </>

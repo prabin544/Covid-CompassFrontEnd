@@ -14,3 +14,25 @@ p {
     background-size: cover;
     background-size: cover;
    }
+
+.acc-Card{
+    background-color: #e1f7fa;
+    box-shadow: 2px 2px 7px 1px #E1D8BF;
+    
+   }
+
+.btn-link{
+    color:black;
+    box-shadow: 2px 2px 7px 1px #E1D8BF;
+}
+
+#acc{
+    background-color: #e1f7fa;
+    color:black;
+    box-shadow: 2px 2px 7px 1px #E1D8BF;
+    border-radius: 5px;
+}
+
+#acc:hover{
+    background-color: #CBDBDD;
+}
