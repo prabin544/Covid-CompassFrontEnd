@@ -21,6 +21,8 @@ This is the covid-compass app that engages the user to search covid data in diff
 - create ```.env``` file
 - change value of REACT_APP_BACKEND_URL as per users backend repo setup
 - run ```npm start```
+- use [API COVID-19 Data](https://api.covid19api.com/)
+- use [Google Maps API](https://developers.google.com/maps/documentation)
 
 ## Design and Animation
 We chose a very neutral palette with pops of color. 
@@ -61,6 +63,6 @@ User can click LogOut button which redirects them to Landing page.
 
 ## Links
 
-[Link to Netlify](https://competent-heisenberg-10c4f7.netlify.app/)
+[Covid-Compass](https://competent-heisenberg-10c4f7.netlify.app/)
 
-
+[Link to backend Code](https://github.com/prabin544/Covid-CompassBackEnd)

@@ -17,9 +17,10 @@ class AboutUs extends React.Component {
                 </Col>
                 <Card.Body>
                   <Card.Title>Michael Hendricks</Card.Title>
-                  <Card.Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                  molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu</Card.Text>
+                  <Card.Text>My name is Michael Hendricks and I am a software developer from living in Portland, Oregon. My previous experience in the Navy and as a bartender help me bring a unique skillset. 
+                    I got software development not knowing what my ideal environment for this would be, but I have realized that accessibility is what I want to move towards. 
+                    I think there are a lot of things in the world that some people can’t do simply because the tools designed for them. I think I can help use software development
+to help redesign the world so that everyone can do everything.</Card.Text>
                   <h5><a href="https://github.com/mhendricks96" atl="GitHubLink" style={{ color: "black" }}><FaGithubSquare /> </a></h5>
                   <h5><a href="https://www.linkedin.com/in/michael3hendricks/" atl="linkedinLink" style={{ color: "black" }}><FaLinkedin /></a></h5>
                 </Card.Body>
@@ -44,8 +45,8 @@ numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiu</Ca
                 <Card.Body>
                   <Card.Title>Louis Lassegue</Card.Title>
                   <Card.Text>Hello, I am Louis Lassegue, a Full-Stack Software Developer. After 15 years in a retail environment specializing in inventory and logistics. I’m transitioning to a career in software development.
-                  I decided to go into software development for a few reasons. I wanted a career that would stand the test of time. Software engineers often work in a team environment that I enjoy working in. Having continuous challenges on a daily basis keeps me engaged.
-                  I’m currently working to master the skill of coding in order to have the ability to work in multiple environments. Preferably, I would like to work for a company that focuses on providing solutions to everyday problems. Additionally, it is important that the organization prides itself on creating an environment of inclusion and that encourages divergent thinking for solutions and ideas.
+                  I’m currently working to master the skill of coding in order to have the ability to work in multiple environments. Preferably, I would like to work for a company that focuses on providing solutions to everyday problems. 
+                  Additionally, it is important that the organization prides itself on creating an environment of inclusion and that encourages divergent thinking for solutions and ideas.
                   </Card.Text>
                   <h5><a href="https://github.com/mrloulass" atl="GitHubLink" style={{ color: "black" }}><FaGithubSquare /> </a></h5>
                   <h5><a href="https://www.linkedin.com/in/louis-lassegue-4269531bb/" atl="linkedinLink" style={{ color: "black" }}><FaLinkedin /></a></h5>
