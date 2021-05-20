@@ -25,3 +25,17 @@ h1 p{
     color: #ffffff;
     font-family: 'Lato', sans-serif;
 }
+
+.formBtn{
+    /* border: solid 1px;
+    border-bottom: 0px; */
+    background-color: #e1f7fa;
+    color:black;
+    
+    box-shadow: 2px 2px 7px 2px #E1D8BF;
+    border-radius: 5px;
+}
+
+.formBtn:hover{
+    background-color: #608B98;
+}

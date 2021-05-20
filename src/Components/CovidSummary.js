@@ -224,7 +224,7 @@ class CovidSummary extends React.Component {
                                                 <option value='60'>Last 60 days</option>
                                             </select>
                                         </Form.Group>
-                                        <Button  onClick={this.saveHandler} >Save country</Button>
+                                        <Button className="formBtn"  onClick={this.saveHandler} >Save Country</Button>
                                         
                                     </Card.Body>
                                 </Card>

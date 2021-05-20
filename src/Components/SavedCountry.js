@@ -59,8 +59,8 @@ class SavedCountry extends React.Component {
                 {
                     this.state.savedLocationsArray.map((location, _id) =>
                     <Accordion >
-                        <Card>
-                            <Card.Header>
+                        <Card >
+                            <Card.Header className="acc-Card">
                                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
                                 {location.locationName}
                                 </Accordion.Toggle>

@@ -47,7 +47,7 @@ class Maps extends React.Component {
     render() {
         console.log(this.props)
         return (
-            <div id='googleMap'>
+            <div id='googleMap' >
                 <PlacesAutocomplete
                     value={this.props.address}
                     onChange={this.handleChange}
@@ -55,7 +55,7 @@ class Maps extends React.Component {
                 >
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     <div>
-                        <input
+                        <input style={{backgroundColor:'#e1f7fa', boxShadow: '2px 2px 7px 1px #E1D8BF', border: '1px solid black', borderBottom:'0'}}
                         {...getInputProps({
                             placeholder: '',
                             className: 'location-search-input',
@@ -86,6 +86,7 @@ class Maps extends React.Component {
                     </div>
                     )}
                 </PlacesAutocomplete>
+                
                 <Map google={this.props.google}
                     initialCenter={{
                         lat: this.state.mapCenter.lat,
@@ -108,7 +109,6 @@ class Maps extends React.Component {
             
                 </Map>
             </div>
-        
             
         );
     }

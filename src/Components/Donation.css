@@ -105,14 +105,20 @@ html {
 }
 
 .btn-primary{
-  border: none;
+  background-color:#e1f7fa ;
+  /* border: solid 1px black; */
   color: black;
-  padding: 10px 20px;
+  padding: 5px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 16px;
-  box-shadow: 0 9px #999;
+  border-radius: 5px;
+  box-shadow: 2px 2px 7px 3px #002f49;
 }
+
+.btn-primary:hover{
+  background-color: #608B98;
+}
+

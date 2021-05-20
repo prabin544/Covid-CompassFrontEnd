@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, CardDeck, Row, Card, Col } from 'react-bootstrap';
+import { Container, CardDeck, Card, Col } from 'react-bootstrap';
 import './AboutUs.css'
 import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 
@@ -10,7 +10,6 @@ class AboutUs extends React.Component {
         <Container fluid="md">
           <h1 className="teamName">Team: OPTIONS</h1>
           <CardDeck className="aboutCardDeck">
-            <Row>
               <Card className="backCard" border="dark" >
                 <Col md={6}>
                   <Card.Img src="https://avatars.githubusercontent.com/u/75649765?v=4" />
@@ -31,7 +30,10 @@ to help redesign the world so that everyone can do everything.</Card.Text>
                 </Col>
                 <Card.Body>
                   <Card.Title>Prabin Singh</Card.Title>
-                  <Card.Text>Hi, My name is Prabin Singh. I am from Keller, TX and computer science graduate from Southern Methodist University. Currently enrolled in Code Fellows as Full Stack Web Developer student. This is my first website and I will be adding different projects in portfolio section of this page as I make progress in my Class. So far this page contains three different application which has been developed using vanilla Js, jQuery for backend and HTML for front end. Styling has been embedded using css whereas there are few different frameworks used to give some effects and animation when page loads.</Card.Text>
+                  <Card.Text>Hi, My name is Prabin Singh. I am from Keller, TX and computer science graduate from Southern Methodist University. 
+                  Currently enrolled in Code Fellows as Full Stack Web Developer student. This is my first website and I will be adding different projects in portfolio section of this page as I make progress in my Class.
+                  So far this page contains three different application which has been developed using vanilla JS, jQuery for backend and HTML for front end. 
+                  Styling has been embedded using css whereas there are few different frameworks used to give some effects and animation when page loads.</Card.Text>
                   <h5><a href="https://github.com/prabin544" atl="GitHubLink" style={{ color: "black" }}><FaGithubSquare /> </a></h5>
                   <h5><a href="link" atl="linkedinLink" style={{ color: "black" }}><FaLinkedin /></a></h5>
                 </Card.Body>
@@ -50,8 +52,6 @@ to help redesign the world so that everyone can do everything.</Card.Text>
                   <h5><a href="https://www.linkedin.com/in/louis-lassegue-4269531bb/" atl="linkedinLink" style={{ color: "black" }}><FaLinkedin /></a></h5>
                 </Card.Body>
               </Card>
-
-            </Row>
           </CardDeck>
         </Container>
       </>
