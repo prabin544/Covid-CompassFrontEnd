@@ -2,12 +2,10 @@ import React from 'react';
 import { Card, Container, Form, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react'
-// import SearchCountry from './SearchCountry';
 import Graph from './Graph';
 import NumberFormat from 'react-number-format';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Donation from './Donation'
-import SavedCountry from './SavedCountry'
 import Maps from './Maps'
 import './CovidSummary.css'
 
@@ -240,7 +238,7 @@ class CovidSummary extends React.Component {
                         </Col>
                         <Col md={3} style={{ textAlign: 'center' }}>
                             <Card border="dark" style={{ marginBottom: 10 }}>
-                                <Card.Header className='header' >Confirmed</Card.Header>
+                                <Card.Header className='header' >Total Confirmed</Card.Header>
                                 <Card.Body>
                                     <Card.Title > <NumberFormat className='numbers' value={this.state.totalConfirmedCases} displayType={'text'} thousandSeparator={true} />  </Card.Title>
                                 </Card.Body>
@@ -261,7 +259,7 @@ class CovidSummary extends React.Component {
                     </Row>
                 </Container>
                 <Maps address={this.state.country}/>
-                <SavedCountry savedLocationsArray={this.state.savedLocationsArray} handleDeleteLocation={this.handleDeleteLocation}/>
+                {/* <SavedCountry savedLocationsArray={this.state.savedLocationsArray} handleDeleteLocation={this.handleDeleteLocation}/> */}
             </>
         );
     }

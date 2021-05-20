@@ -1,5 +1,4 @@
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
-import { Card, Container, Form, Row, Col, Button } from 'react-bootstrap';
 import React from 'react';
 
 import PlacesAutocomplete, {
@@ -17,10 +16,17 @@ class Maps extends React.Component {
             selectedPlace: {},
 
             mapCenter: {
-                lat: 49.2827291,
-                lng: -123.1207375
+                lat: 37.0902,
+                lng: -95.7129
             }
         };
+    }
+
+    componentDidUpdate (){
+
+        console.log('did update', this.props.address);
+        this.handleSelect(this.props.address);
+
     }
 
     handleChange = address => {
@@ -51,7 +57,7 @@ class Maps extends React.Component {
                     <div>
                         <input
                         {...getInputProps({
-                            placeholder: 'Search Places ...',
+                            placeholder: '',
                             className: 'location-search-input',
                         })}
                         />
@@ -88,7 +94,12 @@ class Maps extends React.Component {
                     center={{
                         lat: this.state.mapCenter.lat,
                         lng: this.state.mapCenter.lng,
-                    }}>
+                    }}
+                    zoom = {
+                        4
+                    }
+                    >
+                   
                     <Marker 
                     position={{
                         lat: this.state.mapCenter.lat,
