@@ -43,7 +43,7 @@ class CovidSummary extends React.Component {
         })
         const d = new Date()
         const to = this.formatDate(d);
-        const from = this.formatDate(d.setDate(d.getDate() - this.state.days));
+        const from = this.formatDate(d.setDate(d.getDate() - (this.state.days -1)));
         this.getCountryReport(e.target.value, from, to)
     }
 
@@ -103,11 +103,10 @@ class CovidSummary extends React.Component {
     daysHandler = (e) => {
         this.setState({
             days: e.target.value
-
         })
         const d = new Date()
         const to = this.formatDate(d);
-        const from = this.formatDate(d.setDate(d.getDate() - e.target.value));
+        const from = this.formatDate(d.setDate(d.getDate() - (e.target.value - 1)));
         this.getCountryReport(this.state.country, from, to)
     }
 
@@ -117,11 +116,14 @@ class CovidSummary extends React.Component {
             const xAxisLabel = response.data.map(d => d.Date)
             const yAxisCoronaCount = response.data.map(d => d.Cases)
             const allSummary = this.state.summary.Countries
-            console.log(allSummary)
             const coviddetails = allSummary.find(({ Country }) => Country === countrySlug)
+            const selectedDays = response.data.length - 1
+            console.log(response.data[selectedDays])
+            const cases = response.data[selectedDays].Cases
+            
             this.setState({
                 coronaCountArray: yAxisCoronaCount,
-                totalConfirmedCases: coviddetails.TotalConfirmed,
+                totalConfirmedCases: cases,
                 totalRecovered: coviddetails.TotalRecovered,
                 totalDeaths: coviddetails.TotalDeaths,
                 label: xAxisLabel
@@ -174,13 +176,6 @@ class CovidSummary extends React.Component {
         this.getAllReport();
         this.fetchUserData();
         this.getTotalAmt();
-        // const { user } = this.props.auth0;
-        // const userData = await axios.get(`http://localhost:3001/users/${user.email}`
-        // )
-        // console.log('found user data', userData)
-        // this.setState({
-        //     savedLocationsArray: userData.data[0].savedLocations,
-        // })
     }
 
     render() {
