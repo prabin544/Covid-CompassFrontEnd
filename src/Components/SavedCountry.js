@@ -55,7 +55,7 @@ class SavedCountry extends React.Component {
         
         </Jumbotron>
         <Container >
-            <h1>Saved Locations</h1>
+            <h1>Saved Countries</h1>
                 {
                     this.state.savedLocationsArray.map((location, _id) =>
                     <Accordion >
