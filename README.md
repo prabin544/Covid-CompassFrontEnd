@@ -5,7 +5,7 @@
 * About our project
 * How this works
 * Design and animation
-* Who we are 
+* Our Team 
 * Technologies used
 * Imgs
 * Links
@@ -23,15 +23,16 @@ This is the covid-compass app that engages the user to search covid data in diff
 - run ```npm start```
 - use [API COVID-19 Data](https://api.covid19api.com/)
 - use [Google Maps API](https://developers.google.com/maps/documentation)
+   * Please go to [Google Maps Platform](https://developers.google.com/maps/documentation/javascript/get-api-key#creating-api-keys) to create and use an Google Map API key. 
 
 ## Design and Animation
 We chose a very neutral palette with pops of color. 
 
-## Who we are
+## Our Team
 Prabin Singh, Louis Lassegue, Michael Hendricks
 
 ## Technologies used
-React, Auth0, Node, Axios, React-Bootstrap, Mongoose, MongoDB
+[React.js](https://reactjs.org/), [Auth0](https://auth0.com/docs/), [Node.js](https://nodejs.org/en/docs/), [Axios](https://www.npmjs.com/package/axios), [React-Bootstrap](https://react-bootstrap.github.io/), [Mongoose](https://mongoosejs.com/), [MongoDB](https://docs.mongodb.com/guides/)
 
 ## Imgs
 Welcome to the Landing page! The USER clicks login and authrorizes Auth0 to access google for authentication. 
@@ -63,6 +64,6 @@ User can click LogOut button which redirects them to Landing page.
 
 ## Links
 
-[Covid-Compass](https://competent-heisenberg-10c4f7.netlify.app/)
+[Covid-Compass](https://www.cv19compass.xyz/)
 
 [Link to backend Code](https://github.com/prabin544/Covid-CompassBackEnd)

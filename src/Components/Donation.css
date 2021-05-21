@@ -106,7 +106,7 @@ html {
 
 .btn-primary{
   background-color:#e1f7fa ;
-  /* border: solid 1px black; */
+  border:none;
   color: black;
   padding: 5px 15px;
   text-align: center;
