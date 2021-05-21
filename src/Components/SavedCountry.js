@@ -64,7 +64,7 @@ class SavedCountry extends React.Component {
                                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
                                 {location.locationName}
                                 </Accordion.Toggle>
-                                <Button  id='acc' onClick={() => this.handleDeleteLocation(location._id)} >Delete Country</Button>
+                                <Button  id='acc' variant="danger" onClick={() => this.handleDeleteLocation(location._id)} >Delete Country</Button>
                             </Card.Header>
                             <Accordion.Collapse eventKey="0">
                                 <Card.Body>
