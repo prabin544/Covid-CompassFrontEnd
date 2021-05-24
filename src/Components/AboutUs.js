@@ -5,6 +5,7 @@ import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 
 class AboutUs extends React.Component {
   render() {
+    // all of this code didn't make you think "let's make a component for a single person and then render 3 of them here"?
     return (
       <>
         <Container fluid="md">

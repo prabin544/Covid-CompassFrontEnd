@@ -19,7 +19,7 @@ class SearchCountry extends React.Component {
     return `${year}-${month}-${_date}`;
   }
 
-  coutryHandler = (e) =>{
+  countryHandler = (e) =>{
     e.preventDefault();
     this.setState({
         country: e.target.value
@@ -31,6 +31,10 @@ class SearchCountry extends React.Component {
   }
 
   daysHandler = (e) =>{
+    // You're setting this.state.country to be the number of days--this code could use a solid cleaning/refactor.
+    // It seems like a BUNCH of this code is recreated in CovidSummary.js, and that's the code that's actually
+    // running your website. It's tough to sink my time into this file and then realize it's not even the cause
+    // of the data that's showing up on the page.
       this.setState({
           country: e.target.value
           
@@ -68,7 +72,7 @@ class SearchCountry extends React.Component {
             
             <Form.Group>
             <Form.Label>Country</Form.Label>
-            <select value={this.props.country} onChange={this.coutryHandler}>
+            <select value={this.props.country} onChange={this.countryHandler}>
                 <option value=''>Select Country</option>
             {
                 this.props.summary.Countries && this.props.summary.Countries.map(country=>

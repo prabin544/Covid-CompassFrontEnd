@@ -37,7 +37,7 @@ class CovidSummary extends React.Component {
         const _date = d.getDate();
         return `${year}-${month}-${_date}`;
     }
-    coutryHandler = (e) => {
+    countryHandler = (e) => {
         this.setState({
             country: e.target.value
         })
@@ -178,6 +178,7 @@ class CovidSummary extends React.Component {
         this.getTotalAmt();
     }
 
+    // weird that this file is using 4 spaces for indent where other files are using 2 spaces
     render() {
         console.log(this.state.savedLocationsArray)
         return (
@@ -202,7 +203,7 @@ class CovidSummary extends React.Component {
                                     <Card.Body>
                                         <Form.Group>
                                             <Form.Label>Country</Form.Label>
-                                            <select value={this.state.country} onChange={this.coutryHandler}>
+                                            <select value={this.state.country} onChange={this.countryHandler}>
                                                 <option value=''>Select Country</option>
                                                 {
                                                     this.state.summary.Countries && this.state.summary.Countries.map(country =>
@@ -254,7 +255,6 @@ class CovidSummary extends React.Component {
                     </Row>
                 </Container>
                 <Maps address={this.state.country}/>
-                {/* <SavedCountry savedLocationsArray={this.state.savedLocationsArray} handleDeleteLocation={this.handleDeleteLocation}/> */}
             </>
         );
     }

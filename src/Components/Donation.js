@@ -22,14 +22,14 @@ class Donation extends React.Component {
  
   handleClose = () => {
     this.setState({
-      ...this.state,
+      // you don't need this!
       show: false,
        })
   }
 
   handleShow = () => {
     this.setState({
-      ...this.state,
+      // you don't need this!
       show: true,
     })
   }

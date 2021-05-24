@@ -6,7 +6,6 @@ import Navigation from './Components/Navigation';
 import { withAuth0 } from '@auth0/auth0-react';
 import AboutUs from './Components/AboutUs';
 import CovidSummary from './Components/CovidSummary';
-// import SavedCities from './Components/SavedCities.js'
 import Donation from './Components/Donation';
 import SavedCountry from './Components/SavedCountry';
 
@@ -24,8 +23,8 @@ class App extends React.Component {
     return (
     <Router>
       <Navigation/>
-        <IsLoadingAndError>
-          <Switch>
+      <IsLoadingAndError>
+        <Switch>
           <Route exact path="/">
             {isAuthenticated ? <CovidSummary /> : <AboutUs /> }
             
@@ -35,7 +34,7 @@ class App extends React.Component {
           <Route exact path="/donate"><Donation /></Route >
           <Route exact path="/saved"><SavedCountry /></Route >
         </Switch>
-        </IsLoadingAndError>
+      </IsLoadingAndError>
     </Router>
     )
   }
