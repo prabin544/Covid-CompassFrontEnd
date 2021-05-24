@@ -35,11 +35,6 @@ class Graph extends React.Component {
 
         </div>
         <Line 
-        // style ={{ 
-        //      width: '50px, auto',
-        //      height: '50px, auto',
-        //      marginLeft: '100px'
-        // }}
         data={data} options={options} />
         
       </>

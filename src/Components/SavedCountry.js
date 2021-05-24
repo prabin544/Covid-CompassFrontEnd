@@ -58,6 +58,7 @@ class SavedCountry extends React.Component {
             <h1>Saved Countries</h1>
                 {
                     this.state.savedLocationsArray.map((location, _id) =>
+                    // It's weird to use one accordion per item, rather than a single accordion that wraps all the cards.
                     <Accordion >
                         <Card >
                             <Card.Header className="acc-Card">
